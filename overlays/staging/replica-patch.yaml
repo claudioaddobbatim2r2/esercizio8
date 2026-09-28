@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mio-nginx
+spec:
+  replicas: 4
