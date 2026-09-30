@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/claudioaddobbatim2r2/esercizio8.git
+    repoURL: https://github.com/claudioaddobbatim2r2/esercizio89.git
     targetRevision: main
     path: sync-waves-demo
   destination:
