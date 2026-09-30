@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/TUOUSERNAME/argocd-esercizi.git
+    repoURL: https://github.com/claudioaddobbatim2r2/esercizio8.git
     targetRevision: main
     path: hooks-demo
   destination:
