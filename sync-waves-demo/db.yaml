@@ -19,7 +19,7 @@ spec:
           image: postgres:16
           env:
             - name: POSTGRES_PASSWORD
-              value: password123
+              value: POSTGRES_PASSWORD
           readinessProbe:
             exec:
               command: ["pg_isready", "-U", "postgres"]
