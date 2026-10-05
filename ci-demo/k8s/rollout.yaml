@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: web
-          image: claudioadd/ci-demo:5f35166
+          # image: claudioadd/ci-demo:5f35166
+          image: claudioadd/ci-demo:tag-che-non-esiste
           ports:
             - containerPort: 80
           readinessProbe:
