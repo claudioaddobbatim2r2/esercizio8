@@ -4,7 +4,7 @@ metadata:
   name: hooks-demo
   namespace: argocd
 spec:
-  project: default
+  project: team-demo
   source:
     repoURL: https://github.com/claudioaddobbatim2r2/esercizio8.git
     targetRevision: main

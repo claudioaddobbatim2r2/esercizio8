@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: notify-deploy
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+        - name: notify
+          image: busybox
+          command: ["sh", "-c", "echo 'Deploy completato con successo! (qui in un caso reale manderesti una notifica Slack/email)'"]
+      restartPolicy: Never
+  backoffLimit: 0
