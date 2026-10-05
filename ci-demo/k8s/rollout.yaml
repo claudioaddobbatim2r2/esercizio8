@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: claudioadd/ci-demo:93d8275
+          image: claudioadd/ci-demo:5f35166
           ports:
             - containerPort: 80
           readinessProbe:
