@@ -1,0 +1,32 @@
+name: ci-demo
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ci-demo/app/**'
+permissions:
+  contents: write
+jobs:
+  build-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Calcola il tag
+        run: echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: ci-demo/app
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-demo:${{ env.TAG }}
+      - name: Aggiorna il manifest
+        run: |
+          sed -i "s|image: .*ci-demo:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/ci-demo:${TAG}|" ci-demo/k8s/deployment.yaml
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add ci-demo/k8s/deployment.yaml
+          git commit -m "ci: aggiorna immagine a ${TAG}"
+          git push

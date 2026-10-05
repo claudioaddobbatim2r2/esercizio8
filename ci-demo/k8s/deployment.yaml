@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ci-demo
+  template:
+    metadata:
+      labels:
+        app: ci-demo
+    spec:
+      containers:
+        - name: web
+          image: claudioadd/ci-demo:initial
+          ports:
+            - containerPort: 80
