@@ -11,7 +11,7 @@ spec:
     path: hooks-demo
   destination:
     server: https://kubernetes.default.svc
-    namespace: hooks-demo
+    namespace: default
   syncPolicy:
     automated:
       selfHeal: true
