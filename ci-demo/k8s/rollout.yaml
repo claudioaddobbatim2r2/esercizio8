@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: ci-demo
+spec:
+  replicas: 4
+  revisionHistoryLimit: 2
+  progressDeadlineSeconds: 60
+  selector:
+    matchLabels:
+      app: ci-demo
+  template:
+    metadata:
+      labels:
+        app: ci-demo
+    spec:
+      containers:
+        - name: web
+          image: claudioadd/ci-demo:93d8275
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 2
+            periodSeconds: 3
+  strategy:
+    canary:
+      steps:
+        - setWeight: 25
+        - pause: {}
+        - setWeight: 50
+        - pause: { duration: 20s }
+        - setWeight: 100

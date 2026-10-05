@@ -24,9 +24,9 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-demo:${{ env.TAG }}
       - name: Aggiorna il manifest
         run: |
-          sed -i "s|image: .*ci-demo:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/ci-demo:${TAG}|" ci-demo/k8s/deployment.yaml
+          sed -i "s|image: .*ci-demo:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/ci-demo:${TAG}|" ci-demo/k8s/rollout.yaml
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add ci-demo/k8s/deployment.yaml
+          git add ci-demo/k8s/rollout.yaml
           git commit -m "ci: aggiorna immagine a ${TAG}"
           git push
