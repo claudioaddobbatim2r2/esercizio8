@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ripasso-config
+data:
+  APP_VERSION: "1"
+  REDIS_HOST: redis
