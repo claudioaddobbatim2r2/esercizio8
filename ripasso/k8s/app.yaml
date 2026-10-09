@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: claudioadd/ripasso-app:1
+          image: claudioadd/ripasso-app:tag-inesistente
           ports:
             - containerPort: 5000
           envFrom:
