@@ -10,4 +10,4 @@ configMapGenerator:
   - name: ripasso-config
     behavior: merge
     literals:
-      - APP_VERSION=prod-1
+      - APP_VERSION=prod-2
