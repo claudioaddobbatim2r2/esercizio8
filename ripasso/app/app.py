@@ -19,5 +19,11 @@ def home():
 def health():
     return "ok\n"
 
+@app.route("/segreto")
+def segreto():
+    chiave = os.getenv("API_KEY")
+    if not chiave:
+        return "API_KEY non impostata\n", 500
+    return f"API_KEY presente, lunghezza {len(chiave)}\n"
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

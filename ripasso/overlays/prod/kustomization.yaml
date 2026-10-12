@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: ripasso-prod
 resources:
   - ../../base
+  - sealed-secret.yaml
 replicas:
   - name: ripasso-app
     count: 3
@@ -11,3 +12,4 @@ configMapGenerator:
     behavior: merge
     literals:
       - APP_VERSION=prod-2
+      

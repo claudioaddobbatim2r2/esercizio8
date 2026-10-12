@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: ripasso-dev
 resources:
   - ../../base
+  - sealed-secret.yaml
 replicas:
   - name: ripasso-app
     count: 1
