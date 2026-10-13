@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - redis.yaml
   - app.yaml
+  - smoke-test.yaml
 configMapGenerator:
   - name: ripasso-config
     literals:
