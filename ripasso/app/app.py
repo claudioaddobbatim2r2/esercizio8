@@ -13,7 +13,7 @@ def home():
         visite = r.incr("visite")
     except redis.exceptions.ConnectionError:
         visite = "n/d (Redis non raggiungibile)"
-    return f"Ciao dalla pipeline numero 2!"
+    return f"Ciao dalla pipeline numero 3!"
 
 @app.route("/health")
 def health():
