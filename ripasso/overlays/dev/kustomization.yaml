@@ -12,3 +12,6 @@ configMapGenerator:
     behavior: merge
     literals:
       - APP_VERSION=dev-1
+images:
+  - name: claudioadd/ripasso-app
+    newTag: "2"

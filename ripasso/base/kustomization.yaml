@@ -8,6 +8,3 @@ configMapGenerator:
     literals:
       - APP_VERSION=1
       - REDIS_HOST=redis
-images:
-  - name: claudioadd/ripasso-app
-    newTag: "cda9e3a"
