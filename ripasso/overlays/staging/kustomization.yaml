@@ -12,4 +12,3 @@ configMapGenerator:
     behavior: merge
     literals:
       - APP_VERSION=staging-1
-      - REDIS_HOST=redis-staging
