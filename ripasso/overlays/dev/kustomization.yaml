@@ -16,7 +16,7 @@ configMapGenerator:
   - name: ripasso-config
     behavior: merge
     literals:
-      - APP_VERSION=dev-1
+      - APP_VERSION=dev-2
 images:
   - name: claudioadd/ripasso-app
     newTag: "0972bfa"
