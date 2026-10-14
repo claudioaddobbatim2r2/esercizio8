@@ -14,4 +14,4 @@ configMapGenerator:
       - APP_VERSION=dev-1
 images:
   - name: claudioadd/ripasso-app
-    newTag: "15152e3"
+    newTag: "9999999"
