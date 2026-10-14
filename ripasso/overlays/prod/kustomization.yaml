@@ -4,9 +4,14 @@ namespace: ripasso-prod
 resources:
   - ../../base
   - sealed-secret.yaml
-replicas:
-  - name: ripasso-app
-    count: 3
+patches:
+  - target:
+      kind: Rollout
+      name: ripasso-app
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
 configMapGenerator:
   - name: ripasso-config
     behavior: merge

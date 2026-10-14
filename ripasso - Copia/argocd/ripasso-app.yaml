@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ripasso
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/claudioaddobbatim2r2/esercizio8.git
+    targetRevision: main
+    path: ripasso/k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ripasso
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

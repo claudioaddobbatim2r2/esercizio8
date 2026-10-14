@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - redis.yaml
+  - app.yaml
+  - smoke-test.yaml
+configMapGenerator:
+  - name: ripasso-config
+    literals:
+      - APP_VERSION=1
+      - REDIS_HOST=redis

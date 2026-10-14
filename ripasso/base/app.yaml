@@ -1,11 +1,17 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: ripasso-app
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
   replicas: 2
+  strategy:
+   canary:
+     canaryService: ripasso-app-canary
+     steps:
+       - setWeight: 50
+       - pause: {duration: 30s}
   selector:
     matchLabels:
       app: ripasso-app
@@ -47,7 +53,20 @@ kind: Service
 metadata:
   name: ripasso-app
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  selector:
+    app: ripasso-app
+  ports:
+    - port: 80
+      targetPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ripasso-app-canary
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   selector:
     app: ripasso-app

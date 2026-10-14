@@ -1,0 +1,29 @@
+import os
+import socket
+import redis
+from flask import Flask
+
+app = Flask(__name__)
+r = redis.Redis(host=os.getenv("REDIS_HOST", "redis"), port=6379, decode_responses=True)
+
+@app.route("/")
+def home():
+    versione = os.getenv("APP_VERSION", "1")
+    try:
+        visite = r.incr("visite")
+    except redis.exceptions.ConnectionError:
+        visite = "n/d (Redis non raggiungibile)"
+    return f"Ciao dalla pipeline! Versione {versione} - container: {socket.gethostname()} - visite: {visite}\n"
+
+@app.route("/health")
+def health():
+    return "ok\n"
+
+@app.route("/segreto")
+def segreto():
+    chiave = os.getenv("API_KEY")
+    if not chiave:
+        return "API_KEY non impostata\n", 500
+    return f"API_KEY presente, lunghezza {len(chiave)}\n"
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)

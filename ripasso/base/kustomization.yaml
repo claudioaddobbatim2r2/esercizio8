@@ -9,3 +9,5 @@ configMapGenerator:
     literals:
       - APP_VERSION=1
       - REDIS_HOST=redis
+configurations:
+  - kustomizeconfig.yaml
