@@ -12,11 +12,16 @@ patches:
       - op: replace
         path: /spec/replicas
         value: 1
+      - op: replace
+        path: /spec/strategy/canary/steps
+        value:
+          - setWeight: 50
+          - pause: {}
 configMapGenerator:
   - name: ripasso-config
     behavior: merge
     literals:
-      - APP_VERSION=dev-2
+      - APP_VERSION=dev-3
 images:
   - name: claudioadd/ripasso-app
     newTag: "0972bfa"
