@@ -11,7 +11,9 @@ spec:
      canaryService: ripasso-app-canary
      steps:
        - setWeight: 50
-       - pause: {duration: 30s}
+       - analysis:
+            templates:
+              - templateName: ripasso-check
   selector:
     matchLabels:
       app: ripasso-app

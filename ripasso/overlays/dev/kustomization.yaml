@@ -12,11 +12,6 @@ patches:
       - op: replace
         path: /spec/replicas
         value: 1
-      - op: replace
-        path: /spec/strategy/canary/steps
-        value:
-          - setWeight: 50
-          - pause: {}
 configMapGenerator:
   - name: ripasso-config
     behavior: merge

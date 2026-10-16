@@ -4,6 +4,7 @@ resources:
   - redis.yaml
   - app.yaml
   - smoke-test.yaml
+  - analysis.yaml
 configMapGenerator:
   - name: ripasso-config
     literals:
